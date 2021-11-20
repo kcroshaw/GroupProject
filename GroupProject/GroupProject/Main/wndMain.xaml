@@ -1,0 +1,34 @@
+﻿<Window x:Class="Group_Project_Prototype.Main.wndMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Group_Project_Prototype.Main"
+        mc:Ignorable="d"
+        Title="wndMain" Height="450" Width="800">
+    <Grid>
+        <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="794">
+            <MenuItem Header="_Search For Invoice" Click="searchForInvoice"></MenuItem>
+            <MenuItem Header="_Update Item" Click="updateItem"></MenuItem>
+        </Menu>
+        <DataGrid HorizontalAlignment="Left" Height="323" Margin="10,25,0,0" VerticalAlignment="Top" Width="201"/>
+        <Button x:Name="newInvoice" Content="New Invoice" HorizontalAlignment="Left" Margin="230,225,0,0" VerticalAlignment="Top" Width="100" Click="newInvoice_Click"/>
+        <Button x:Name="deleteInvoice" Content="Delete Invoice" HorizontalAlignment="Left" Margin="230,123,0,0" VerticalAlignment="Top" Width="100" Click="deleteInvoice_Click"/>
+        <ComboBox x:Name="comboInvoice" HorizontalAlignment="Left" Margin="229,70,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboAddItems" HorizontalAlignment="Left" Margin="229,300,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="addItem" Content="Add Item" HorizontalAlignment="Left" Margin="229,327,0,0" VerticalAlignment="Top" Width="75" Click="addItem_Click"/>
+        <TextBox x:Name="itemPrice" HorizontalAlignment="Left" Height="22" Margin="373,300,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <ComboBox x:Name="comboInvoiceItems" HorizontalAlignment="Left" Margin="373,70,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="deleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="373,97,0,0" VerticalAlignment="Top" Width="75" Click="deleteItem_Click"/>
+        <Button x:Name="saveInvoice" Content="Save Invoice" HorizontalAlignment="Left" Margin="229,97,0,0" VerticalAlignment="Top" Width="100" Click="saveInvoice_Click"/>
+        <Label Content="Add Items to Invoice" HorizontalAlignment="Left" Margin="230,269,0,0" VerticalAlignment="Top"/>
+        <Label Content="Select Invoice" HorizontalAlignment="Left" Margin="230,39,0,0" VerticalAlignment="Top"/>
+        <Label Content="Select Item" HorizontalAlignment="Left" Margin="373,39,0,0" VerticalAlignment="Top"/>
+        <Label Content="Create New Invoice" HorizontalAlignment="Left" Margin="229,168,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date:" HorizontalAlignment="Left" Margin="455,188,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="totalCostInput" HorizontalAlignment="Left" Height="20" Margin="299,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Total Cost:" HorizontalAlignment="Left" Margin="229,192,0,0" VerticalAlignment="Top"/>
+        <Calendar HorizontalAlignment="Left" Margin="514,184,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
