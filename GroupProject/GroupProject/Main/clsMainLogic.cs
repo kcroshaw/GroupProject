@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Group_Project_Prototype.Main
+namespace GroupProject.Main
 {
     class clsMainLogic
     {

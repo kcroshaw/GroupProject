@@ -21,6 +21,10 @@ namespace GroupProject.Search
     /// </summary>
     public partial class wndSearch : Window
     {
+        /// <summary>
+        /// invoice ID that will be passed between windows
+        /// </summary>
+        public int currInvoiceID;
         public wndSearch()
         {
             try { 
@@ -162,7 +166,14 @@ namespace GroupProject.Search
         {
             try
             {
-                Select_Invoice_Button.IsEnabled = true;
+                if (Invoices_DataGrid.SelectedIndex > -1)
+                {
+                    Select_Invoice_Button.IsEnabled = true;
+                }
+                else
+                {
+                    Select_Invoice_Button.IsEnabled = false;
+                }
             }
             catch (Exception ex)
             {

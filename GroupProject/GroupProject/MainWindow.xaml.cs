@@ -1,4 +1,5 @@
 ﻿using GroupProject.Items;
+using GroupProject.Main;
 using GroupProject.Search;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace GroupProject
     {
         wndItems WndItems = new wndItems();
         wndSearch WndSearch = new wndSearch();
+        wndMain WndMain = new wndMain();
         public MainWindow()
         {
             InitializeComponent();
@@ -41,6 +43,13 @@ namespace GroupProject
         {
             Hide();
             WndSearch.ShowDialog();
+            Show();
+        }
+
+        private void main_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            WndMain.ShowDialog();
             Show();
         }
     }

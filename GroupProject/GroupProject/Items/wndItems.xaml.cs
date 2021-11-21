@@ -20,6 +20,11 @@ namespace GroupProject.Items
     public partial class wndItems : Window
     {
         clsItemsLogic clsItemsLogic;
+
+        /// <summary>
+        /// invoice ID that will be passed between windows
+        /// </summary>
+        public int currInvoiceID;
         public wndItems()
         {
             InitializeComponent();

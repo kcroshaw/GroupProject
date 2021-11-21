@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Group_Project_Prototype.Main
+namespace GroupProject.Main
 {
     /// <summary>
     /// Interaction logic for wndMain.xaml
@@ -28,7 +28,7 @@ namespace Group_Project_Prototype.Main
         /// <summary>
         /// allows the user to edit an item
         /// </summary>
-        Item.wndItem WndItem;
+        Items.wndItems WndItem;
 
 
 
@@ -51,7 +51,7 @@ namespace Group_Project_Prototype.Main
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
             WndSearch = new Search.wndSearch();
-            WndItem = new Item.wndItem();
+            WndItem = new Items.wndItems();
 
             ClsMainLogic = new clsMainLogic();
         }
