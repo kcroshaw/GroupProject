@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="wndItems" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dgItems" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="Auto" CanUserAddRows="False"/>
+        <DataGrid x:Name="dgItems" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="Auto" CanUserAddRows="False" SelectionMode="Single" SelectionChanged="dgItems_SelectionChanged"/>
         <Button x:Name="btnAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="403,46,0,0" VerticalAlignment="Top" Width="75" Click="btnAddItem_Click"/>
         <Button x:Name="btnEditItem" Content="Edit Item" HorizontalAlignment="Left" Margin="403,85,0,0" VerticalAlignment="Top" Width="75" Click="btnEditItem_Click"/>
         <Button x:Name="btnDeleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="403,124,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteItem_Click"/>
         <TextBox x:Name="tbxItemCode" HorizontalAlignment="Left" Height="23" Margin="535,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-        <TextBox x:Name="tbxItemDesc" HorizontalAlignment="Left" Height="23" Margin="535,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <TextBox x:Name="tbxItemDesc" HorizontalAlignment="Left" Height="Auto" Margin="535,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
         <TextBox x:Name="tbxItemCost" HorizontalAlignment="Left" Height="23" Margin="535,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
         <Button x:Name="btnConfirmAdd" Content="Add" HorizontalAlignment="Left" Margin="559,152,0,0" VerticalAlignment="Top" Width="Auto" Click="btnConfirmAdd_Click" Visibility="Hidden"/>
         <Button x:Name="btnConfirmEdit" Content="Edit" HorizontalAlignment="Left" Margin="559,152,0,0" VerticalAlignment="Top" Width="Auto" Click="btnConfirmEdit_Click" Visibility="Hidden"/>

@@ -60,5 +60,63 @@ namespace GroupProject.Items
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
+
+        public void UpdateItem(string itemDesc, int itemCost, string itemCode)
+        {
+            using (OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb"))
+            {
+                conn.Open();
+                OleDbCommand cmd = new OleDbCommand(clsItemsSQL.UpdateItems(itemDesc, itemCost, itemCode), conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+
+        public DataSet IsItemOnInvoice(string itemCode)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                using (OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb"))
+                {
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter())
+                    {
+
+                        //Open the connection to the database
+                        conn.Open();
+
+                        //Add the information for the SelectCommand using the SQL statement and the connection object
+                        adapter.SelectCommand = new OleDbCommand(clsItemsSQL.SelectItemInvoice(itemCode), conn);
+                        adapter.SelectCommand.CommandTimeout = 0;
+
+                        //Fill up the DataSet with data
+                        adapter.Fill(ds);
+                    }
+                }
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        public void DeleteItem(string itemCode)
+        {
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data source= " + Directory.GetCurrentDirectory() + "\\Invoice.mdb"))
+                {
+                    conn.Open();
+                    OleDbCommand cmd = new OleDbCommand(clsItemsSQL.DeleteItem(itemCode), conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
     }
 }

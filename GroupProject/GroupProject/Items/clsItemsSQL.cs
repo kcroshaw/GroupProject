@@ -36,10 +36,10 @@ namespace GroupProject.Items
         /// <returns>Invoice number for given item code</returns>
         public string SelectItemInvoice(string itemCode)
         {
-            string sSQL = "SELECT DISTINCT(InvoiceNum) FROM LineItems WHERE ItemCode = " + itemCode;
+            string sSQL = "SELECT DISTINCT(InvoiceNum) FROM LineItems WHERE ItemCode = '" + itemCode + "'";
             return sSQL;
         }
-        
+
         /// <summary>
         /// SQL updates a specific item in the database
         /// </summary>
@@ -49,7 +49,7 @@ namespace GroupProject.Items
         /// <returns></returns>
         public string UpdateItems(string itemDesc, int itemCost, string itemCode)
         {
-            string sSQL = "UPDATE ItemDesc Set ItemDesc = " + itemDesc + ", " + "Cost = " + itemCost + "WHERE ItemCode = " + itemCode;
+            string sSQL = "UPDATE ItemDesc Set ItemDesc = '" + itemDesc + "', " + "Cost = " + itemCost + " WHERE ItemCode = '" + itemCode + "'";
             return sSQL;
         }
 
