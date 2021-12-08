@@ -9,7 +9,7 @@
     <Grid x:Name="Window_Grid">
         <StackPanel x:Name="Window_StackPanel" Orientation="Horizontal" HorizontalAlignment="Center">
             <GroupBox x:Name="Invoices_GroupBox" Header="Invoices" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16">
-                <DataGrid x:Name="Invoices_DataGrid" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" MinHeight="300" MinWidth="350" Margin="16" SelectionChanged="Invoices_DataGrid_SelectionChanged"/>
+                <DataGrid x:Name="Invoices_DataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16" SelectionChanged="Invoices_DataGrid_SelectionChanged" CanUserAddRows="False" CanUserDeleteRows="False" MaxHeight="400" MaxWidth="600"/>
             </GroupBox>
             <StackPanel x:Name="Search_StackPanel" Margin="64,0,0,0">
                 <GroupBox x:Name="Search_Options_GroupBox" Header="Search Options" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16">

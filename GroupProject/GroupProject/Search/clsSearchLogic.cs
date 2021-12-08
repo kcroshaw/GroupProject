@@ -71,7 +71,8 @@ namespace GroupProject.Search
         /// <returns></returns>
         public DataView GetInvoices()
         {
-            try { 
+            try
+            {
                 clsSearchSQL searchSQL = new clsSearchSQL();
                 string query = searchSQL.SelectAllInvoices();
                 int retVal = 0;
@@ -91,7 +92,8 @@ namespace GroupProject.Search
         /// <returns></returns>
         public List<string> GetLists(string column)
         {
-            try { 
+            try
+            {
                 clsSearchSQL searchSQL = new clsSearchSQL();
                 string query = searchSQL.SelectColumn(column);
                 int retVal = 0;
@@ -123,7 +125,8 @@ namespace GroupProject.Search
         /// <returns></returns>
         public DataView GetInvoicesWhere(string column, string value, string column2 , string value2, string column3, string value3)
         {
-            try { 
+            try
+            {
                 clsSearchSQL searchSQL = new clsSearchSQL();
                 string query = searchSQL.SelectInvoicesWhere(column, value, column2, value2, column3, value3);
                 int retVal = 0;

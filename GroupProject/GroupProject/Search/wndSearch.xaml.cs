@@ -24,7 +24,7 @@ namespace GroupProject.Search
         /// <summary>
         /// invoice ID that will be passed between windows
         /// </summary>
-        public int currInvoiceID { get; set; }
+        public int CurrInvoiceID { get; set; }
         public wndSearch()
         {
             try { 
@@ -52,7 +52,7 @@ namespace GroupProject.Search
         private void Select_Invoice(object sender, RoutedEventArgs e)
         {
             DataRowView invoice = Invoices_DataGrid.SelectedItem as DataRowView;
-            currInvoiceID = int.Parse(invoice.Row.ItemArray[0].ToString());
+            CurrInvoiceID = int.Parse(invoice.Row.ItemArray[0].ToString());
             DialogResult = true;
             Close();
         }

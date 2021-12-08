@@ -68,7 +68,7 @@ namespace GroupProject.Main
                 // this is how we are going to pass data between windows
                 if (WndSearch.ShowDialog() == true)
                 {
-                    currInvoiceID = WndSearch.currInvoiceID;
+                    currInvoiceID = WndSearch.CurrInvoiceID;
                 }
             }
             catch (Exception ex)

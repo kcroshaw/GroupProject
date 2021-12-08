@@ -42,7 +42,7 @@ namespace GroupProject.Search
 
             if (column == "InvoiceDate")
             {
-                value = $"'{value}'";
+                value = $"#{value}#";
             }
             string query = "SELECT InvoiceNum, InvoiceDate, TotalCost " +
                            "FROM Invoices " +
@@ -52,7 +52,7 @@ namespace GroupProject.Search
             {
                 if (column2 == "InvoiceDate")
                 {
-                    value2 = $"'{value2}'";
+                    value2 = $"#{value2}#";
                 }
                 query += $"AND {column2} = {value2}";
             }
@@ -61,7 +61,7 @@ namespace GroupProject.Search
             {
                 if (column3 == "InvoiceDate")
                 {
-                    value3 = $"'{value3}'";
+                    value3 = $"#{value3}#";
                 }
                 query += $"AND {column3} = {value3}";
             }
