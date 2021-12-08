@@ -80,3 +80,27 @@ C:\Users\ae02\Documents\GitHub\GroupProject\GroupProject\GroupProject\obj\Debug\
 C:\Users\ae02\Documents\GitHub\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.Properties.Resources.resources
 C:\Users\ae02\Documents\GitHub\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.GenerateResource.cache
 C:\Users\ae02\Documents\GitHub\GroupProject\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\bin\Debug\Invoice.mdb
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\bin\Debug\GroupProject.exe
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.AssemblyReference.cache
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.SuggestedBindingRedirects.cache
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\Items\wndItems.g.cs
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\MainWindow.g.cs
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\Main\wndMain.g.cs
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\Search\wndSearch.g.cs
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\App.g.cs
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject_Content.g.cs
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject_MarkupCompile.cache
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject_MarkupCompile.lref
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\Items\wndItems.baml
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\MainWindow.baml
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\Main\wndMain.baml
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\Search\wndSearch.baml
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.g.resources
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.Properties.Resources.resources
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.GenerateResource.cache
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.exe
+C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
