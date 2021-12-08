@@ -52,6 +52,17 @@ namespace GroupProject.Main
             WndItem = new Items.wndItems();
 
             ClsMainLogic = new clsMainLogic();
+
+            List<int> imyList = new List<int>();
+            List<string> smyList = new List<string>();
+
+            // populate invoices combo box
+            imyList = ClsMainLogic.populateInvoices();
+            comboInvoice.ItemsSource = imyList;
+
+            // populate items combo box
+            smyList = ClsMainLogic.populateItems();
+            comboAddItems.ItemsSource = smyList;
         }
 
         #region Menu Controls
@@ -89,6 +100,29 @@ namespace GroupProject.Main
                 // this is how we are going to pass data between windows
                 WndItem.currInvoiceID = currInvoiceID;
                 WndItem.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region selectionChanges
+
+        private void comboInvoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                int selection;
+                Int32.TryParse(comboInvoice.SelectedItem.ToString(), out selection);
+
+                List<string> myList = new List<string>();
+                myList = ClsMainLogic.populateInvoiceItems(selection);
+                comboInvoiceItems.ItemsSource = myList;
             }
             catch (Exception ex)
             {
@@ -221,5 +255,7 @@ namespace GroupProject.Main
                                              "HandleError Exception: " + ex.Message);
             }
         }
+
+        
     }
 }

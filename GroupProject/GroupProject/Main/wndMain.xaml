@@ -14,7 +14,7 @@
         <DataGrid HorizontalAlignment="Left" Height="323" Margin="10,25,0,0" VerticalAlignment="Top" Width="201"/>
         <Button x:Name="newInvoice" Content="New Invoice" HorizontalAlignment="Left" Margin="230,225,0,0" VerticalAlignment="Top" Width="100" Click="newInvoice_Click"/>
         <Button x:Name="deleteInvoice" Content="Delete Invoice" HorizontalAlignment="Left" Margin="230,123,0,0" VerticalAlignment="Top" Width="100" Click="deleteInvoice_Click"/>
-        <ComboBox x:Name="comboInvoice" HorizontalAlignment="Left" Margin="229,70,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboInvoice" HorizontalAlignment="Left" Margin="229,70,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboInvoice_SelectionChanged"/>
         <ComboBox x:Name="comboAddItems" HorizontalAlignment="Left" Margin="229,300,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="addItem" Content="Add Item" HorizontalAlignment="Left" Margin="229,327,0,0" VerticalAlignment="Top" Width="75" Click="addItem_Click"/>
         <TextBox x:Name="itemPrice" HorizontalAlignment="Left" Height="22" Margin="373,300,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
