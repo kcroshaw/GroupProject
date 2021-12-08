@@ -104,3 +104,5 @@ C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupP
 C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
 C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.exe
 C:\Users\Austin\Desktop\final project\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
+C:\Users\seant\Source\Repos\GroupProject\GroupProject\GroupProject\obj\Debug\Main\wndMain.g.cs
+C:\Users\seant\Source\Repos\GroupProject\GroupProject\GroupProject\obj\Debug\Main\wndMain.baml
