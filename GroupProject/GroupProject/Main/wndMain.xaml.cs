@@ -30,8 +30,6 @@ namespace GroupProject.Main
         /// </summary>
         Items.wndItems WndItem;
 
-
-
         /// <summary>
         /// holds all the business logic for the main window
         /// </summary>
