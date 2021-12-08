@@ -48,20 +48,18 @@ namespace GroupProject.Main
             InitializeComponent();
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
-            WndSearch = new Search.wndSearch();
-            WndItem = new Items.wndItems();
-
             ClsMainLogic = new clsMainLogic();
 
-            List<int> imyList = new List<int>();
+
+            // initially populate combo boxes
+
+            List<int> imyList = new List<int>(); // create temp lists
             List<string> smyList = new List<string>();
-
-            // populate invoices combo box
-            imyList = ClsMainLogic.populateInvoices();
+            
+            imyList = ClsMainLogic.populateInvoices(); // populate invoices combo box
             comboInvoice.ItemsSource = imyList;
-
-            // populate items combo box
-            smyList = ClsMainLogic.populateItems();
+            
+            smyList = ClsMainLogic.populateItems(); // populate items combo box
             comboAddItems.ItemsSource = smyList;
         }
 
@@ -76,9 +74,22 @@ namespace GroupProject.Main
         {
             try
             {
-                // this is how we are going to pass data between windows
-                WndSearch.currInvoiceID = currInvoiceID;
-                WndSearch.ShowDialog();
+                WndSearch = new Search.wndSearch();
+
+                if (WndSearch.ShowDialog() == true)
+                {
+                    currInvoiceID = WndSearch.currInvoiceID; // get the searched invoice id
+                    int index = -1;
+                    foreach (int item in comboInvoice.Items) // iterate through until we find an invoice id that matches
+                    {
+                        index++; // increase index so we know what to change
+                        if (item == currInvoiceID)
+                        {
+                            break;
+                        }
+                    }
+                    comboInvoice.SelectedIndex = index; // update selected index to be our index we incremented
+                }
             }
             catch (Exception ex)
             {
@@ -97,6 +108,7 @@ namespace GroupProject.Main
         {
             try
             {
+                WndItem = new Items.wndItems();
                 // this is how we are going to pass data between windows
                 WndItem.currInvoiceID = currInvoiceID;
                 WndItem.ShowDialog();
@@ -111,18 +123,46 @@ namespace GroupProject.Main
 
         #endregion
 
-        #region selectionChanges
+        #region Selection Changes
 
+        /// <summary>
+        /// updates the comboinvoiceitems every time a new invoice is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboInvoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                int selection;
+                int selection; // grab the current invoice
                 Int32.TryParse(comboInvoice.SelectedItem.ToString(), out selection);
 
-                List<string> myList = new List<string>();
+                List<string> myList = new List<string>(); // refresh combo invoice items
                 myList = ClsMainLogic.populateInvoiceItems(selection);
                 comboInvoiceItems.ItemsSource = myList;
+
+                dvInvoice.ItemsSource = ClsMainLogic.populateDataGrid(selection); // refresh the data grid
+            }
+            catch (Exception ex)
+            {
+                //This is the top level method so we want to handle the exception
+                HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name,
+                            MethodInfo.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// changes the item price text box each time an item is selected from the combo for add items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboAddItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                string itemName = comboAddItems.SelectedItem.ToString(); // get item name
+                string price = ClsMainLogic.getItemPrice(itemName); // get item price
+                itemPrice.Text = price; // update text box to display price
             }
             catch (Exception ex)
             {
@@ -183,7 +223,12 @@ namespace GroupProject.Main
         {
             try
             {
-                // code goes here
+                int selection; // get current invoice
+                Int32.TryParse(comboInvoice.SelectedItem.ToString(), out selection);
+
+                ClsMainLogic.deleteInvoice(selection);
+
+                comboInvoice.SelectedItem = null; // select nothing in invoice combo
             }
             catch (Exception ex)
             {
@@ -206,7 +251,19 @@ namespace GroupProject.Main
         {
             try
             {
-                // code goes here
+                int selection;
+                Int32.TryParse(comboInvoice.SelectedItem.ToString(), out selection);
+
+                string selectedItem = comboInvoiceItems.SelectedItem.ToString();
+
+                ClsMainLogic.deleteItemFromInvoice(selection, selectedItem);
+
+                comboInvoiceItems.SelectedItem = null; // select nothing
+                dvInvoice.ItemsSource = ClsMainLogic.populateDataGrid(selection); // refresh data grid
+                List<string> myList = new List<string>(); // refresh combo invoice items
+                myList = ClsMainLogic.populateInvoiceItems(selection);
+                comboInvoiceItems.ItemsSource = myList;
+
             }
             catch (Exception ex)
             {
@@ -225,7 +282,17 @@ namespace GroupProject.Main
         {
             try
             {
-                // code goes here
+                int selection; // get current invoice id
+                Int32.TryParse(comboInvoice.SelectedItem.ToString(), out selection);
+
+                string selectedItem = comboAddItems.SelectedItem.ToString(); // get currently selected item
+
+                ClsMainLogic.addItemToInvoice(selection, selectedItem);
+
+                dvInvoice.ItemsSource = ClsMainLogic.populateDataGrid(selection); // refresh data grid
+                List<string> myList = new List<string>(); // refresh combo invoice items
+                myList = ClsMainLogic.populateInvoiceItems(selection);
+                comboInvoiceItems.ItemsSource = myList;
             }
             catch (Exception ex)
             {
@@ -255,7 +322,5 @@ namespace GroupProject.Main
                                              "HandleError Exception: " + ex.Message);
             }
         }
-
-        
     }
 }

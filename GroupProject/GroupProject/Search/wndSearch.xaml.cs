@@ -51,9 +51,9 @@ namespace GroupProject.Search
         /// <param name="e"></param>
         private void Select_Invoice(object sender, RoutedEventArgs e)
         {
-            var invoice = Invoices_DataGrid.SelectedItem;
-            //TODO: Send invoice to main window
-
+            DataRowView invoice = Invoices_DataGrid.SelectedItem as DataRowView;
+            currInvoiceID = int.Parse(invoice.Row.ItemArray[0].ToString());
+            DialogResult = true;
             Close();
         }
 

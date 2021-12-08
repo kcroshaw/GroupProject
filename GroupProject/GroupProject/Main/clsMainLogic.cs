@@ -43,8 +43,8 @@ namespace GroupProject.Main
             {
                 List<int> myList = new List<int>();
                 string sql = ClsMainSQL.selectAllInvoices();
-                int iRet = 0; // holds the return values
-                DataSet ds = new DataSet(); // holds the return values
+                int iRet = 0;
+                DataSet ds = new DataSet();
                 ds = ExecuteSQLStatement(sql, ref iRet);
 
                 for (int i = 0; i < iRet; i++)
@@ -73,8 +73,8 @@ namespace GroupProject.Main
             {
                 List<string> myList = new List<string>();
                 string sql = ClsMainSQL.selectAllItems();
-                int iRet = 0; // holds the return values
-                DataSet ds = new DataSet(); // holds the return values
+                int iRet = 0;
+                DataSet ds = new DataSet();
                 ds = ExecuteSQLStatement(sql, ref iRet);
 
                 for (int i = 0; i < iRet; i++)
@@ -102,8 +102,8 @@ namespace GroupProject.Main
             {
                 List<string> myList = new List<string>();
                 string sql = ClsMainSQL.selectAllItemsFromInvoice(invoiceid);
-                int iRet = 0; // holds the return values
-                DataSet ds = new DataSet(); // holds the return values
+                int iRet = 0;
+                DataSet ds = new DataSet();
                 ds = ExecuteSQLStatement(sql, ref iRet);
 
                 for (int i = 0; i < iRet; i++)
@@ -120,9 +120,115 @@ namespace GroupProject.Main
             }
         }
 
+        /// <summary>
+        /// returns a data view of all the items given an invoice
+        /// </summary>
+        /// <param name="invoiceid"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public DataView populateDataGrid(int invoiceid)
+        {
+            try
+            {
+                string sql = ClsMainSQL.selectAllItemsFromInvoice(invoiceid);
+                int iRet = 0;
+                
+                return new DataView(ExecuteSQLStatement(sql, ref iRet).Tables[0]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
 
+        /// <summary>
+        /// deletes the currently selected invoice
+        /// </summary>
+        /// <param name="invoiceid"></param>
+        /// <exception cref="Exception"></exception>
+        public void deleteInvoice(int invoiceid)
+        {
+            try
+            {
+                string sinvoiceid = invoiceid.ToString(); // quick convert
+                string sql = ClsMainSQL.deleteAllItemsFromInvoice(sinvoiceid);
+                ExecuteNonQuery(sql);
+                sql = ClsMainSQL.deleteInvoice(sinvoiceid);
+                ExecuteNonQuery(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
 
+        /// <summary>
+        /// adds the selected item to the current invoice
+        /// </summary>
+        /// <param name="invoiceid"></param>
+        /// <param name="itemName"></param>
+        /// <exception cref="Exception"></exception>
+        public void addItemToInvoice(int invoiceid, string itemName)
+        {
+            try
+            {
+                string sinvoiceid = invoiceid.ToString(); // quick convert
 
+                string sSQL = ClsMainSQL.getItemCode(itemName);
+                string itemCode = ExecuteScalarSQL(sSQL);
+
+                sSQL = ClsMainSQL.getLineItemNum(sinvoiceid);
+                string maxLineNum = ExecuteScalarSQL(sSQL);
+
+                sSQL = ClsMainSQL.insertLineItem(sinvoiceid, maxLineNum, itemCode);
+                ExecuteNonQuery(sSQL);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// returns the items price given its name
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public string getItemPrice(string itemName)
+        {
+            try
+            {
+                string sSQL = ClsMainSQL.getItemPrice(itemName);
+                string price = ExecuteScalarSQL(sSQL).ToString();
+                return price;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// deletes an item from an invoice given its name
+        /// </summary>
+        /// <param name="invoiceid"></param>
+        /// <param name="itemName"></param>
+        /// <exception cref="Exception"></exception>
+        public void deleteItemFromInvoice(int invoiceid, string itemName)
+        {
+            try
+            {
+                string SQL = ClsMainSQL.getItemCode(itemName);
+                string itemCode = ExecuteScalarSQL(SQL).ToString();
+                SQL = ClsMainSQL.deleteItem(invoiceid.ToString(), itemCode);
+                ExecuteNonQuery(SQL);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
 
 
 

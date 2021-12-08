@@ -9,22 +9,6 @@ namespace GroupProject.Main
 {
     class clsMainSQL
     {
-        /* SQL statements given in document
-        - UPDATE Invoices SET TotalCost = 1200 WHERE InvoiceNum = 123
-        - DELETE From LineItems WHERE InvoiceNum = 1234
-        - DELETE From Invoices WHERE InvoiceNum = 1234
-        - INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values(123, 1, 'AA')
-        - INSERT INTO Invoices(InvoiceDate, TotalCost) Values('#4/13/2018#', 100)
-        - SELECT InvoiceNum, InvoiceDate, TotalCost FROM Invoices WHERE InvoiceNum = 123
-        - select ItemCode, ItemDesc, Cost from ItemDesc
-        - SELECT LineItems.ItemCode, ItemDesc.ItemDesc, ItemDesc.Cost FROM LineItems, ItemDesc Where LineItems.ItemCode = ItemDesc.ItemCode And LineItems.InvoiceNum = 5000
-        */
-
-        
-
-
-
-
         /// <summary>
         /// selects all rows from Invoices table
         /// </summary>
@@ -175,7 +159,82 @@ namespace GroupProject.Main
         {
             try
             {
-                string sSQL = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values(" + sInvoiceNum + ", " + sLineItemNum + ", '" + sItemCode + "')";
+                //        - INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values(123, 1, 'AA')
+
+                string sSQL = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) Values (" + sInvoiceNum + ", " + sLineItemNum + ", '" + sItemCode + "')";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                //Just throw the exception
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." +
+                                    MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// returns an items code based on its name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public string getItemCode(string name)
+        {
+            try
+            {
+                string sSQL = $"SELECT ItemCode FROM ItemDesc WHERE ItemDesc = '{name}'";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                //Just throw the exception
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." +
+                                    MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// returns the max line item num based on invoice num
+        /// </summary>
+        /// <param name="invoiceNum"></param>
+        /// <returns></returns>
+        public string getLineItemNum(string invoiceNum)
+        {
+            string sSQL = $"SELECT max(LineItemNum) + 1 FROM LineItems WHERE InvoiceNum = {invoiceNum}";
+            return sSQL;
+        }
+
+        /// <summary>
+        /// returns an items price based on its name
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <returns></returns>
+        public string getItemPrice(string itemName)
+        {
+            try
+            {
+                string sSQL = $"SELECT Cost FROM ItemDesc WHERE ItemDesc = '{itemName}'";
+                return sSQL;
+            }
+            catch (Exception ex)
+            {
+                //Just throw the exception
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." +
+                                    MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// deletes an item from LineItems given the invoice id and item code
+        /// </summary>
+        /// <param name="invoiceid"></param>
+        /// <param name="itemCode"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public string deleteItem(string invoiceid, string itemCode)
+        {
+            try
+            {
+                string sSQL = $"DELETE FROM LineItems WHERE InvoiceNum = {invoiceid} AND ItemCode = '{itemCode}'";
                 return sSQL;
             }
             catch (Exception ex)
